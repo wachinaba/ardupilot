@@ -59,7 +59,8 @@ uint8_t RC_Channels::get_radio_in(uint16_t *chans, const uint8_t num_channels)
 
     const uint8_t read_channels = MIN(num_channels, NUM_RC_CHANNELS);
     for (uint8_t i = 0; i < read_channels; i++) {
-        chans[i] = channel(i)->get_radio_in();
+        // chans[i] = channel(i)->get_radio_in();
+        chans[i] = hal.rcin->read(i);
     }
 
     return read_channels;
